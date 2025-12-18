@@ -22,6 +22,8 @@ if [[ ! $NEW_VERSION =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   echo "Version must look like v0.0.0" >&2
   exit 1
 fi
+VERSION_NO_V=${NEW_VERSION#v}
+# Artifact filenames omit the leading 'v' to align with create-github-release.sh
 
 echo "Building release packages for $NEW_VERSION"
 
@@ -181,8 +183,8 @@ build_variant() {
       mkdir -p "$base_dir/.codex/prompts"
       generate_commands codex md "\$ARGUMENTS" "$base_dir/.codex/prompts" "$script" ;;
   esac
-  ( cd "$base_dir" && zip -r "../speclite-template-${agent}-${script}-${NEW_VERSION}.zip" . )
-  echo "Created $GENRELEASES_DIR/speclite-template-${agent}-${script}-${NEW_VERSION}.zip"
+  ( cd "$base_dir" && zip -r "../speclite-template-${agent}-${script}-${VERSION_NO_V}.zip" . )
+  echo "Created $GENRELEASES_DIR/speclite-template-${agent}-${script}-${VERSION_NO_V}.zip"
 }
 
 # Determine agent list
@@ -232,5 +234,4 @@ for agent in "${AGENT_LIST[@]}"; do
 done
 
 echo "Archives in $GENRELEASES_DIR:"
-ls -1 "$GENRELEASES_DIR"/speclite-template-*-"${NEW_VERSION}".zip
-
+ls -1 "$GENRELEASES_DIR"/speclite-template-*-"${VERSION_NO_V}".zip
