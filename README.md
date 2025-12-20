@@ -9,7 +9,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/BretJohnson/speclite/actions/workflows/release.yml"><img src="https://github.com/BretJohnson/speclite/actions/workflows/release.yml/badge.svg" alt="Release"/></a>
+    <a href="https://github.com/BretJohnson/speclite/actions/workflows/ci.yml"><img src="https://github.com/BretJohnson/speclite/actions/workflows/ci.yml/badge.svg" alt="CI"/></a>
+    <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/version-0.0.4-blue" alt="Version"/></a>
     <a href="https://github.com/BretJohnson/speclite/stargazers"><img src="https://img.shields.io/github/stars/BretJohnson/speclite?style=social" alt="GitHub stars"/></a>
     <a href="https://github.com/BretJohnson/speclite/blob/main/LICENSE"><img src="https://img.shields.io/github/license/BretJohnson/speclite" alt="License"/></a>
 </p>
@@ -85,9 +86,7 @@ uvx --from git+https://github.com/BretJohnson/speclite.git speclite init <PROJEC
 **Benefits of persistent installation:**
 
 - Tool stays installed and available in PATH
-- No need to create shell aliases
-- Better tool management with `uv tool list`, `uv tool upgrade`, `uv tool uninstall`
-- Cleaner shell configuration
+- Tool management with `uv tool list`, `uv tool upgrade`, `uv tool uninstall`
 
 ### 2. Establish project principles
 
@@ -167,9 +166,7 @@ The `speclite` command supports the following options:
 | `--no-git`             | Flag     | Skip git repository initialization                                                                 |
 | `--here`               | Flag     | Initialize project in the current directory instead of creating a new one                          |
 | `--force`              | Flag     | Force merge/overwrite when initializing in current directory (skip confirmation)                   |
-| `--skip-tls`           | Flag     | Skip SSL/TLS verification (not recommended)                                                        |
 | `--debug`              | Flag     | Enable detailed debug output for troubleshooting                                                   |
-| `--github-token`       | Option   | GitHub token for API requests (or set GH_TOKEN/GITHUB_TOKEN env variable)                          |
 
 ### Examples
 
@@ -205,9 +202,6 @@ speclite init my-project --ai gemini --no-git
 
 # Enable debug output for troubleshooting
 speclite init my-project --ai claude --debug
-
-# Use GitHub token for API requests (helpful for corporate environments)
-speclite init my-project --ai claude --github-token ghp_your_token_here
 
 # Check system requirements
 speclite check
@@ -280,7 +274,7 @@ This README is the primary documentation entry point. The links below take you t
 - **[Installation](./docs/installation.md)** - Prerequisites and setup
 - **[Quickstart](./docs/quickstart.md)** - Fast path to your first SpecLite project
 - **[Upgrade Guide](./docs/upgrade.md)** - Updating the CLI and templates
-- **[Local Development](./docs/local-development.md)** - Contributing and working on the CLI
+- **[Contributing](./CONTRIBUTING.md)** - Contributing and working on the CLI
 - **[Spec-Driven Development Methodology](./spec-driven.md)** - Deep dive into the full process
 
 ---
