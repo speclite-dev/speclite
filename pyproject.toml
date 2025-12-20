@@ -1,15 +1,13 @@
 [project]
 name = "speclite-cli"
-version = "0.0.3"
+version = "0.0.4"
 description = "SpecLite CLI. A lightweight tool to bootstrap your projects for Spec-Driven Development (SDD)."
 requires-python = ">=3.11"
 dependencies = [
     "typer",
     "rich",
-    "httpx[socks]",
     "platformdirs",
     "readchar",
-    "truststore>=0.10.4",
 ]
 
 [project.scripts]
@@ -21,3 +19,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/speclite_cli"]
+[tool.hatch.build.targets.wheel.force-include]
+"templates" = "speclite_cli/templates"
+"scripts" = "speclite_cli/scripts"
+"memory" = "speclite_cli/memory"

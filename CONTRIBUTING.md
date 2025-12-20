@@ -64,25 +64,17 @@ When working on SpecLite:
 
 ### Testing template and command changes locally
 
-Running `uv run speclite init` pulls released packages, which won’t include your local changes.  
-To test your templates, commands, and other changes locally, follow these steps:
+Running `uvx` from a Git URL pulls released builds, which won’t include your local changes.
+To test templates and commands locally, run the CLI from your local repo instead:
 
-1. **Create release packages**
-
-   Run the following command to generate the local packages:
+1. **Run the CLI from source**
 
    ```bash
-   ./.github/workflows/scripts/create-release-packages.sh v1.0.0
+   cd <my-test-project>
+   uvx --from ~/src/speclite speclite init .
    ```
 
-2. **Copy the relevant packages to your test project**
-
-   ```bash
-   cp -r .genreleases/sdd-core-package/. <path-to-test-project>/
-   cp -r .genreleases/sdd-copilot-package-sh/. <path-to-test-project>/
-   ```
-
-3. **Open and test the agent**
+2. **Open and test the agent**
 
    Navigate to your test project folder and open the agent to verify your implementation.
 

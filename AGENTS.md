@@ -92,38 +92,23 @@ Update the **Supported AI Agents** section in `README.md` to include the new age
 - Add any relevant notes about the agent's implementation
 - Ensure the table formatting remains aligned and consistent
 
-#### 4. Update Release Package Script
+#### 4. Update Template Generation
 
-Modify `.github/workflows/scripts/create-release-packages.sh`:
+Update the local template generation in `src/speclite_cli/__init__.py` so the new agent gets the right command format and folder structure:
 
-##### Add to ALL_AGENTS array
-
-```bash
-ALL_AGENTS=(claude gemini copilot cursor-agent codex)
+```python
+elif ai_assistant == "new-agent-cli":
+    command_count += _generate_commands(
+        templates_dir,
+        staging_root / ".newagent" / "commands",
+        agent=ai_assistant,
+        ext="md",
+        arg_format="$ARGUMENTS",
+        script_variant=script_type,
+    )
 ```
 
-##### Add case statement for directory structure
-
-```bash
-case $agent in
-  # ... existing cases ...
-  new-agent)
-    mkdir -p "$base_dir/.newagent/commands"
-    generate_commands new-agent md "\$ARGUMENTS" "$base_dir/.newagent/commands" "$script" ;;
-esac
-```
-
-#### 4. Update GitHub Release Script
-
-Modify `.github/workflows/scripts/create-github-release.sh` to include the new agent's packages:
-
-```bash
-gh release create "$VERSION" \
-  # ... existing packages ...
-  .genreleases/speclite-template-new-agent-sh-"$VERSION".zip \
-  .genreleases/speclite-template-new-agent-ps-"$VERSION".zip \
-  # Add new agent packages here
-```
+If the agent needs extra files (like `GEMINI.md` or VS Code settings), add those in the same block.
 
 #### 5. Update Agent Context Scripts
 

@@ -5,6 +5,18 @@ All notable changes to the SpecLite CLI and templates are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.4] - 2025-12-19
+
+### Changed
+
+- Bundled `templates/`, `scripts/`, and `memory/` into the CLI wheel and generate agent command files locally during `speclite init` without GitHub downloads.
+- Removed unused `--skip-tls` and `--github-token` options from `speclite init`.
+- Removed unused GitHub template download helpers from the CLI.
+- Simplified `speclite version` to show a single CLI version value.
+- Removed unused `httpx` and `truststore` dependencies from the CLI package.
+- Removed template package release workflow/scripts now that templates are bundled.
+- Removed `docs/local-development.md` in favor of `CONTRIBUTING.md`.
+
 ## [0.0.3] - 2025-12-19
 
 ### Changed
