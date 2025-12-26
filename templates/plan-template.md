@@ -1,7 +1,6 @@
 # Implementation Plan: [FEATURE]
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/.speclite/changes/[###-feature-name]/spec.md`
+**Input**: Feature specification from `.speclite/changes/[###-feature-name]/spec.md`
 
 **Note**: This template is filled in by the `/sl.plan` command. See `.speclite/templates/commands/plan.md` for the execution workflow.
 
