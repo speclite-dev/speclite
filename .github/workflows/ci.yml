@@ -25,6 +25,10 @@ jobs:
       - name: Compile sources
         run: uv run python -m compileall src
       - name: CLI smoke test
-        run: uv run python -m src.speclite_cli --help
-      - name: CLI init smoke test
-        run: uv run python -m src.speclite_cli init /tmp/speclite-ci --ai claude --ignore-agent-tools --script sh --no-git
+        run: uv run python -m speclite_cli --help
+      - name: CLI install smoke test
+        run: |
+          rm -rf /tmp/speclite-ci
+          mkdir -p /tmp/speclite-ci
+          cd /tmp/speclite-ci
+          uv run python -m speclite_cli install --ai claude --ignore-agent-tools --script sh --force
